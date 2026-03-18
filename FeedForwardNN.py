@@ -10,6 +10,18 @@ class Network(object):
 
 
 
+    def feedforward(self, a):
+        """The initial (a) is the input vector (x) and the final
+        returned (a) is the output vector of the entire network"""
+        for w, b in zip(self.weights, self.biases):
+            a = sigmoid(np.dot(w,a) + b)
+        return a
+
+
+
+def sigmoid(z):
+        return 1.0 / (1.0 + np.exp(-z))
+
 myLayers = (2, 3, 1)
 myNetwork = Network(myLayers)
 
