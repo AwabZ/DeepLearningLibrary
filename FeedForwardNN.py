@@ -24,6 +24,9 @@ def sigmoid(z):
 
 myLayers = (2, 3, 1)
 myNetwork = Network(myLayers)
+some_input = np.array([[0.5],[0.3]])
+result = myNetwork.feedforward(some_input)
+print(f"result: {result}")
 
 # For Demonstration Purposes:
 print(f"num_layers: {len(myLayers)}")
