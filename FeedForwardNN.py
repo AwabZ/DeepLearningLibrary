@@ -44,9 +44,9 @@ class Network(object):
               single_nabla_b, single_nabla_w = self.backprop(x, y)
               nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, single_nabla_b)]
               nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, single_nabla_w)]
-              
-         self.weights = [w - (eta/len(n)) * nw for w,nw in zip(self.weights, nabla_w)]
-         self.biases = [b - (eta/len(n)) * nb for b,nb in zip(self.biases, nabla_b)]
+
+         self.weights = [w - (eta/n) * nw for w,nw in zip(self.weights, nabla_w)]
+         self.biases = [b - (eta/n) * nb for b,nb in zip(self.biases, nabla_b)]
 
 
 
