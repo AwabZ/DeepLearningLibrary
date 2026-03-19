@@ -48,6 +48,11 @@ class Network(object):
          self.weights = [w - (eta/n) * nw for w,nw in zip(self.weights, nabla_w)]
          self.biases = [b - (eta/n) * nb for b,nb in zip(self.biases, nabla_b)]
 
+    
+    def evaluate(self, test_data):
+         test_results = [ (np.argmax(self.feedforward(x)), y) for (x,y) in test_data ]
+         return sum(int(x == y) for (x,y) in test_results)
+
 
 
 
