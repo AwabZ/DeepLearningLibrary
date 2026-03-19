@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 class Network(object):
 
@@ -16,6 +17,24 @@ class Network(object):
         for w, b in zip(self.weights, self.biases):
             a = sigmoid(np.dot(w,a) + b)
         return a
+
+
+    def SGD(self, training_data, epochs, batch_size, eta, test_data=None):
+         if test_data:
+              num_tests = len(test_data)
+         n = len(training_data)
+         for epoch in range(epochs):
+              random.shuffle(training_data)
+              mini_batches = []
+              for k in range(0, n, batch_size):
+                   mini_batches.append(training_data[k:k+batch_size])
+              for mini_batch in mini_batches:
+                   self.update_mini_batch(mini_batch, eta)
+              if test_data:
+                   test_results = self.evaluate(test_data)
+                   print(f"Epoch {epoch}: {test_results} / {num_tests}")
+              else:
+                   print(f"Epoch {epoch} complete")
 
 
 
